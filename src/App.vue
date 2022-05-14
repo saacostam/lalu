@@ -28,4 +28,7 @@
 	box-shadow: inset 0 0 3px #0000004d;
 	background-color: white;
 }
+:root{
+	--pink: #FA62EA;
+}
 </style>
