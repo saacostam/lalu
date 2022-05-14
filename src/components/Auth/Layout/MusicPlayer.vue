@@ -1,7 +1,7 @@
 <template>
     <div class="music-player">
+        <input type="range" id="progress" v-model="this.currentTime" min="0" :max="this.totalTime" :style="`background-size: ${this.currentTime*100/this.totalTime}% 100%;`">
         <audio id="audio" src="https://raw.githubusercontent.com/saacostam/vanilla-dj-app/main/songs/Music Pack 1/Daft Punk - One More Time.mp3"></audio>
-        <input type="range" id="progress" :style="`background-size: ${this.currentTime*100/this.totalTime}% 100%;`">
     </div>
 </template>
 
@@ -13,6 +13,33 @@ export default {
         currentTime: 50,
         totalTime: 100
       }
+    },
+    mounted(){
+      const audioElement = document.getElementById("audio");
+      audioElement.addEventListener("ended", ()=>{
+        this.forward();
+      })
+
+      audioElement.addEventListener("timeupdate", ()=>{
+        this.currentTime = audioElement.currentTime;
+      })
+
+      audioElement.addEventListener("durationchange", ()=>{
+        this.totalTime = audioElement.duration;
+      })
+
+      const progressBar = document.getElementById("progress");
+      progressBar.addEventListener("input", (e)=>{
+        audioElement.currentTime = e.target.value;
+      });
+    },
+    methods:{
+      forward(){
+        const audioElement = document.getElementById("audio");
+        this.$store.state.player.forward();
+        audioElement.load();
+        this.play();
+      },
     }
 }
 </script>

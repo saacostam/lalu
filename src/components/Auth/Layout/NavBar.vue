@@ -18,7 +18,7 @@
                 <router-link :to="{path:'/app/become-artist'}">Become an Artist</router-link>
             </div>
         </div>
-        <img src="/lalu_logo 2.png" class="image-responsive" alt="" id="logo">
+        <img src="/lalu_logo 2.png" alt="" id="logo">
     </div>
 </template>
 
