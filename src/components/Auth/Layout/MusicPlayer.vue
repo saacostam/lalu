@@ -1,13 +1,19 @@
 <template>
     <div class="music-player">
         <audio id="audio" src="https://raw.githubusercontent.com/saacostam/vanilla-dj-app/main/songs/Music Pack 1/Daft Punk - One More Time.mp3"></audio>
-        <input type="range" id="progress">
+        <input type="range" id="progress" :style="`background-size: ${this.currentTime*100/this.totalTime}% 100%;`">
     </div>
 </template>
 
 <script>
 export default {
-    name: 'MusicPlayer'
+    name: 'MusicPlayer',
+    data(){
+      return {
+        currentTime: 50,
+        totalTime: 100
+      }
+    }
 }
 </script>
 
