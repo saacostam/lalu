@@ -2,7 +2,10 @@
   <div class="auth">
     <div class="non-player-content">
       <NavBar id="navbar"/>
-      <router-view class="nested-view"/>
+      <div class="view-router-content">
+        <SearchBar id="search-bar"/>
+        <router-view class="nested-view"/>
+      </div>
     </div>
     <MusicPlayer id="music-player"/>
   </div>
@@ -12,10 +15,11 @@
 // @ is an alias to /src
 import NavBar from '@/components/Auth/Layout/NavBar.vue'
 import MusicPlayer from '@/components/Auth/Layout/MusicPlayer.vue'
+import SearchBar from '@/components/Auth/Layout/SearchBar.vue'
 
 export default {
   name: 'Auth',
-  components: { NavBar, MusicPlayer },
+  components: { NavBar, MusicPlayer, SearchBar },
   data(){
     return {
 
@@ -28,26 +32,27 @@ export default {
 .auth{
   width: 100vw;
   height: 100vh;
+  max-height: 100vh;
   background-color: #101010;
+}
+.non-player-content{
+  width:100vw;
+  position: fixed;
+  top: 0;
+  height: calc(100vh - 140px);
 
+  display: flex;
+  flex-direction: row;
+}
+.view-router-content{
+  flex: auto;
   display: flex;
   flex-direction: column;
 }
-.non-player-content{
-  flex: auto;
-  display: flex;
-  flex-direction: row;
-}
-#music-player{
-  flex: none;
-  
-  display: flex;
-  flex-direction: row;
-}
 .nested-view{
   flex: auto;
-}
-.nested-view div{
+  min-height: calc(100vh - 180px);
+  overflow-y: auto;
   width: 100%;
 }
 </style>

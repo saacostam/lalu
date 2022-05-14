@@ -11,7 +11,9 @@ import MyLikes from '../components/Auth/Views/MyLikes.vue'
 import Playlist from '../components/Auth/Views/Playlist.vue'
 import Artist from '../components/Auth/Views/Artist.vue'
 import Artists from '../components/Auth/Views/Artists.vue'
+import BecomeArtist from '../components/Auth/Views/BecomeArtist.vue'
 import ArtistProfile from '../components/Auth/Views/ArtistProfile.vue'
+import UploadSong from '../components/Auth/Views/UploadSong.vue'
 
 const routes = [{
         path: '/',
@@ -51,6 +53,16 @@ const routes = [{
                 path: 'artist/:id',
                 name: 'Artist',
                 component: Artist
+            },
+            {
+                path: 'become-artist',
+                name: 'BecomeArtist',
+                component: BecomeArtist
+            },
+            {
+                path: 'upload-song',
+                name: 'UploadSong',
+                component: UploadSong
             },
             {
                 path: 'artist-profile/:id',
