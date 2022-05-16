@@ -39,7 +39,7 @@ export default {
   width:100vw;
   position: fixed;
   top: 0;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 100px);
 
   display: flex;
   flex-direction: row;
@@ -51,7 +51,7 @@ export default {
 }
 .nested-view{
   flex: auto;
-  min-height: calc(100vh - 180px);
+  min-height: calc(100vh - 140px);
   overflow-y: auto;
   width: 100%;
 }

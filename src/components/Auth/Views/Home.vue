@@ -1,6 +1,7 @@
 <template>
     <div class="home">
         <h3>Home</h3>
+        <span class="text-white">{{this.$store.state.songQueue.queue}}</span>
     </div>
 </template>
 
