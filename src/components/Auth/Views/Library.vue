@@ -2,8 +2,30 @@
     <div class="library">
         <div class="liked-songs">
             <h3 class="header">LIKED SONGS</h3>
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item" :class="{'active':j===1}" v-for="j in Math.floor((this.songs.length)/5)" :key="j">
+                        <div class="tarj" v-for="i in 5" :key="i">
+                            <div class="image"></div>
+                            <div class="data">
+                                <span class="title">{{this.songs[5*(j-1)+(i-1)].title}}</span>
+                                <span class="artist">{{this.songs[5*(j-1)+(i-1)].artist}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
             <div class="scroll">
-                <div class="card" v-for="song in this.songs" :key="song.title">
+                <div class="tarj" v-for="song in this.songs" :key="song.title">
                     <div class="image">{{song.title}}</div>
                     <div class="data">
                         <span class="title">{{song.title}}</span>
@@ -15,9 +37,6 @@
 
         <div class="playlists">
             <h3 class="header">PLAYLISTS</h3>
-            <div class="scroll">
-
-            </div>
         </div>
     </div>
 </template>
@@ -51,6 +70,22 @@ export default {
                 {
                     title: 'Blinding Lights',
                     artist: 'The Weeknd'
+                },
+                {
+                    title: 'Blinding Lights',
+                    artist: 'The Weeknd'
+                },
+                {
+                    title: 'Blinding Lights',
+                    artist: 'The Weeknd'
+                },
+                {
+                    title: 'Blinding Lights',
+                    artist: 'The Weeknd'
+                },
+                {
+                    title: 'Blinding Lights',
+                    artist: 'The Weeknd'
                 }
             ]
         }
@@ -59,6 +94,10 @@ export default {
 </script>
 
 <style scoped>
+.carousel-inner{
+    align-items: center;
+    justify-content: center;
+}
 .library{
     overflow-y: auto;
     padding: 1em 3em;
@@ -68,38 +107,32 @@ export default {
     font-size: 1.2em;
     font-weight: 500;
 }
-.scroll{
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-}
-.card{
-    flex: 0 0 10em;
-    width: 10em;
+.tarj{
+    display:inline-block;
+    width: calc(80%/5);
     border: none;
     border-radius: 1.5em;
     background-color: #1a1a1a;
     margin: 1em;
 }
-.card .image{
-    width: 10em;
-    height: 10em;
+.tarj .image{
+    width: 100%;
+    height: 0;
+    padding-top: 100%;
     background-color: var(--pink);
     border-radius: 1.5em;
-
-    display:flex; align-items: center; justify-content: center;
 }
-.card .data{
+.tarj .data{
     padding: 10px 20px;
 }
-.card .data span{
+.tarj .data span{
     display: block;
 }
-.card .data span.title{
+.tarj .data span.title{
     font-size: 0.9em;
     color: white;
 }
-.card .data span.artist{
+.tarj .data span.artist{
     font-size: 0.7em;
     color: #B594B1
 }
