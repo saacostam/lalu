@@ -54,5 +54,6 @@ export default {
   min-height: calc(100vh - 140px);
   overflow-y: auto;
   width: 100%;
+  max-width: calc(100vw -  250px);
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
     <div class="home">
-        <h3>Home</h3>
-        <span class="text-white">{{this.$store.state.songQueue.queue}}</span>
+        <h3></h3>
     </div>
 </template>
 
@@ -13,6 +12,6 @@ export default {
 
 <style scoped>
 .home{
-    background-color: #aa3bb9;
+    overflow-y: auto;
 }
 </style>
