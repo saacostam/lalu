@@ -3,6 +3,11 @@
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+*{
+	font-family: 'Trebuchet MS', 'Roboto', sans-serif;
+}
 /*
  *  STYLE 1
  */

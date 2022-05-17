@@ -1,17 +1,57 @@
 <template>
     <div class="nav-bar">
-        <div>
-            <img src="https://picsum.photos/250/250" class="user-image">
-        </div>
-        <div class="nav-items">
-            <div class="nav-item" :class="{'active':$route.name==='Home'}">
-                <router-link :to="{path:'/app/home'}">Home</router-link>
+        <div class="nav-container">
+            <div class="nav-header">
+                <img src="https://picsum.photos/125/125" alt="Avatar">
             </div>
-            <div class="nav-item" :class="{'active':$route.name==='Library'}">
-                <router-link :to="{path:'/app/library'}">Library</router-link>
+            <div class="nav-main">
+                <nav>
+                    <ul>
+                        <li>
+                            <span class="home-menu" :class="{'active':$route.name==='Home'}">
+                                <img src="/icons/home (1).png"  alt="Home-icon" >
+                                <router-link :to="{path:'/app/home'}">Home</router-link>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="library-menu" :class="{'active':$route.name==='Library'}">
+                                <img src="/icons/library(0).png"  alt="Library-icon" >
+                                <router-link :to="{path:'/app/library'}">Library</router-link>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="artist-menu" :class="{'active':$route.name==='Artists'}">
+                                <img src="/icons/artist(0).png"  alt="artist-icon" >
+                                <router-link :to="{path:'/app/artists'}">Artists</router-link>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="be-artist-menu" :class="{'active':$route.name==='BecomeArtist'}">
+                                <img src="/icons/be-artist(0).png"  alt="headphones-icon" >
+                                <router-link :to="{path:'/app/become-artist'}">Be an Artist</router-link>
+                            </span>
+                        </li>
+                        <!--
+                    <li>
+                        <span class="upload-menu">
+                            <img src="icons/cloud-upload(0).png"  alt="upload-icon" >
+                            <a href="#">upload Song</a>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="artist-profile-menu">
+                            <img src="icons/artist-profile(0).png"  alt="artist-profile-icon" >
+                            <a href="#">Artist profile</a>
+                        </span>
+                    </li>
+                    -->
+                    </ul>
+                </nav>
+            </div>
+            <div class="nav-footer">
+                <img src="/images/lalu_logo 3.png" alt="Lalu_logo">
             </div>
         </div>
-        <img src="/lalu_logo 2.png" alt="" id="logo">
     </div>
 </template>
 
@@ -26,47 +66,119 @@ export default {
 </script>
 
 <style scoped>
+.nav-main nav ul li *{
+    margin: 0.3em;
+}
 .nav-bar{
-    width: 250px;
-    min-width: 250px;
-    height: calc(100vh - 100px);
-    min-height: calc(100vh - 100px);
-    background: linear-gradient(#A325AD , #1a1a1a 20%);
     overflow-y: auto;
+    width: 190px;
 }
-.user-image{
-    width: 8em;
-    height: 8em;
-    border-radius: 50%;
-    background: black;
-    box-shadow: 0px 2px 5px 5px rgba(203, 107, 230, 0.42);
-    margin: 1.5em auto 0 auto;
-    display: block;
+/*==============================*/
+/* nav style */
+
+.nav-container{
+    width: 190px;
+    height: 100%;
+    background: linear-gradient(180deg, #A325AD 0%, #1A1A1A 17.19%);
+    transform: rotate(0.05deg);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Trebuchet MS', 'Inter', sans-serif;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.nav-items{
-    display: block;
-    margin: 1em auto 0 auto;
-    padding: 1em;
+
+/* nav-bar header */
+.nav-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
 }
-.nav-item{
-    margin-top: 0.2em;
+
+.nav-header img{
+    border-radius: 200px;
+    width : 125px; 
+    height : 125px;
+    margin: 30px 20px 30px 20px;
+    -webkit-box-shadow: 0px 2px 5px 5px rgba(203, 107, 230, 0.42);
+    -moz-box-shadow: 0px 2px 5px 5px rgba(203, 107, 230, 0.42);
+    box-shadow: 0px 2px 5px 5px rgba(203, 107, 230, 0.42); 
+
 }
-.nav-items .nav-item *{
+
+/*nav main style */
+
+.nav-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+    list-style: none;
     text-decoration: none;
-    color: white;
-    font-weight: 200;
-    font-size: 1.2em;
-    transition: color 0.2s ease;
+    height: 45%;
 }
-.nav-items .nav-item.active *{
-    color: var(--pink);
-}
-.nav-items .nav-item *:hover{
-    color: var(--pink);
-}
-#logo{
+
+.nav-main ul{
+    list-style: none;
     margin: auto;
-    width: 90%;
-    height: auto;
+    padding: 0;
 }
+
+.nav-main li{
+    margin: 5px;
+}
+.nav-main a{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.nav-main img{
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+}
+.home-menu, .library-menu, .artist-menu, .be-artist-menu, .upload-menu, .artist-profile-menu{
+    opacity: 0.2;
+}
+.home-menu:hover , .library-menu:hover , .artist-menu:hover , .be-artist-menu:hover, .upload-menu:hover, .artist-profile-menu:hover{
+    opacity: 1;
+    transition: 0.3s;
+}
+.upload-menu img{
+    width: 30px;
+    height: 30px;
+    margin: 5px 5px 5px 3px;
+}
+
+.artist-profile-menu img{
+    width: 30px;
+    height: 30px;
+    margin: 5px 5px 5px 3px;
+}
+
+/*Example of select option*/
+.active{
+    opacity: 1;
+}
+
+span.active *{
+    color: #FA62EA;
+}
+
+
+/*nav footer*/
+.nav-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 15px;
+}
+
+.nav-footer img{
+    width: 150px;
+    height: 60px;
+}
+
+/*==============================*/
 </style>

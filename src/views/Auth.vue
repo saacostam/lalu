@@ -51,9 +51,9 @@ export default {
 }
 .nested-view{
   flex: auto;
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 162px);
   overflow-y: auto;
   width: 100%;
-  max-width: calc(100vw -  250px);
+  max-width: calc(100vw -  190px);
 }
 </style>

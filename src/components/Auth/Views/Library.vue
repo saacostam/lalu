@@ -18,7 +18,18 @@ export default {
     components:{Carousel},
     data(){
         return {
-            songs: [{title: 'Levitating',artist: 'Dua Lipa'}, {title: 'Breathin',artist: 'Ariana Grande'},{title: 'Bite Me',artist: 'Avril Lavigne'}, {title: 'Summer', artist: 'Calvin Harris'},{title: 'Blinding Lights',artist: 'The Weeknd'},{title: 'Blinding Lights',artist: 'The Weeknd'},{title: 'Blinding Lights',artist: 'The Weeknd'},{title: 'Blinding Lights',artist: 'The Weeknd'},{title: 'Blinding Lights',artist: 'The Weeknd'}],
+            songs: [
+                {title: 'Levitating',artist: 'Dua Lipa', src:'/images/dua-lipa.png'}, 
+                {title: 'Breathin',artist: 'Ariana Grande', src:'/images/ariana-grande.png'}, 
+                {title: 'Bite Me',artist: 'Avril Lavigne', src:'/images/avril-artist.png'}, 
+                {title: 'Summer', artist: 'Calvin Harris', src:'/images/calvin-harris.png'},
+                {title: 'Blinding Lights',artist: 'The Weeknd', src:'/images/the-weeknd.png'},
+                {title: 'As It Was',artist: 'Harry Styles', src:'/images/harry-styles.png'},
+                {title: 'N95',artist: 'Kendrick Lamar', src:'/images/kendrick-lamar.png'},
+                {title: 'First Class',artist: 'Jack Harlow', src:'/images/jack-harlow.png'},
+                {title: 'Heat Waves',artist: 'Glass Animals', src:'/images/glass-animals.png'},
+                {title: 'Savage',artist: 'Tiësto & Deorro', src:'/images/tiesto.png'},
+            ],
             view_width: 0
         }
     },
@@ -34,7 +45,6 @@ export default {
 
 <style scoped>
 #library{
-    overflow-y: auto;
     padding: 1em 3em;
 }
 .header{
