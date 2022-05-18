@@ -1,23 +1,31 @@
 <template>
     <div id="library">
-        <div class="liked-songs">
-            <h3 class="header">LIKED SONGS</h3>
-            <Carousel :songs="this.songs" />
+        <div class="playlists mb-3">
+            <h3 class="header">PLAYLISTS</h3>
+            <CarouselPlaylist :songs="this.getAllUsernamePlaylistsAndAlbums" />
         </div>
 
-        <div class="playlists">
-            <h3 class="header">PLAYLISTS</h3>
+        <div class="liked-songs mb-3">
+            <h3 class="header">LIKED SONGS</h3>
+            <Carousel :songs="this.songs" />
         </div>
     </div>
 </template>
 
 <script>
+import gql from 'graphql-tag'
 import Carousel from '../../Util/Carousel.vue'
+import CarouselPlaylist from '../../Util/CarouselPlaylist.vue'
 export default {
     name: 'Library',
-    components:{Carousel},
+    components:{Carousel, CarouselPlaylist},
     data(){
         return {
+            getAllUsernamePlaylistsAndAlbums:[
+                {playlist_name: 'Playlist #1', _id:1},
+                {playlist_name: 'Playlist #2', _id:2},
+                {playlist_name: 'Playlist #3', _id:3},
+            ],
             songs: [
                 {title: 'Levitating',artist: 'Dua Lipa', src:'/images/dua-lipa.png'}, 
                 {title: 'Breathin',artist: 'Ariana Grande', src:'/images/ariana-grande.png'}, 
@@ -33,6 +41,21 @@ export default {
             view_width: 0
         }
     },
+    apollo:{
+        // getAllUsernamePlaylistsAndAlbums: {
+        //     query: gql`
+        //         query ($playlistUsername: String!){
+        //             getAllUsernamePlaylists(playlist_username: $playlistUsername) {
+        //                 _id
+        //                 playlist_name
+        //             }
+        //         }
+        //     `,
+        //     variables: {
+        //         "playlistUsername": this.$store.state.username
+        //     },
+        // }
+    }
     // mounted(){
     //     const library = document.getElementById('library');
     //     window.addEventListener('resize', ()=>{

@@ -12,7 +12,7 @@
                     </div>
                     <div class="forms-container-login">
                         <div class="signin">
-                            <form @submit="login" class="sing-in-form">
+                            <form @submit="mockLogin" class="sing-in-form">
                                 <h2 class="title">Nice to see you again!</h2>
                                 <div class="input-field">
                                     <i class = "fas fa-user"></i>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="forms-container-register">
                         <div class="register">
-                            <form action="" class="register-form">
+                            <form @submit="mockRegister" class="register-form">
                                 <div class="input-field">
                                     <i class="fa-solid fa-address-card"></i>
                                     <input v-model ="registerFirstname" type="text" placeholder="First Name" required>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="input-field">
                                     <i class="fa-solid fa-user-lock"></i>
-                                    <input v-model ="registerConfirmPassword" type="password" placeholder="Confirm Password" required>
+                                    <input v-model ="registerConfirmPassword" type="password" placeholder="Confirm Password" required/>
                                 </div>
                                 <input  type ="submit" value="Rock Up!" class="btn solid">
                             </form>
@@ -74,7 +74,6 @@ import gql from 'graphql-tag';
 export default {
   name: 'Landing',
   data(){
-    console.log(this.$apollo);
     return {
       option:'login',
       login_username:'',
@@ -116,28 +115,114 @@ export default {
     });
   },
   methods:{
-      login(event){
+      mockLogin(event){
           event.preventDefault();
-          this.$apollo.mutate({
+
+          if (this.login_username === 'Test3' && this.login_password==='12345'){
+              localStorage.setItem("token", "token-dummy");
+              localStorage.setItem("username", this.login_username);
+              this.$router.push({path : "app/home"});
+          }else{
+              alert('Credenciales Incorrectas');
+          }
+
+          this.login_username = '';
+          this.login_password = '';
+      },
+      mockRegister(event){
+        event.preventDefault();
+
+        if (true){
+            // Registro satistactorio
+            document.querySelector(".container").classList.remove("login-mode");
+        }else{
+            // Fallo en el registro
+            alert('Fallo en el registro');
+        }
+
+        this.registerFirstname = '';
+        this.registerLastname = '';
+        this.registerUsername = '';
+        this.registerEmail='';
+        this.registerDate = '';
+        this.registerPassword = '';
+        this.registerConfirmPassword = '';
+      },
+        login(event){
+            event.preventDefault();
+          
+            this.$apollo.mutate({
               mutation:gql`mutation ($login: LoginInput!){
                   loginUser(login:$login)
               }`,
                 variables:{
                     "login": {
                         "user_name": this.login_username,
-                        "email": null,
                         "user_password": this.login_password,
                     }
                 }
             })
             .then((data)=>{
-                this.$router.push({
-                    path : "app/home",
-                })
+                if (data.loginUser!=='Usuario no Autenticado!'){
+                    // Usuario Autenticado
+                    localStorage.setItem("token", "token-dummy");
+                    localStorage.setItem("username", data.loginUser);
+                    this.$router.push({path : "app/home"});
+                }else{
+                    // Usuario no autenticado
+                    alert('Credenciales Incorrectas');
+                }
+                this.login_username = '';
+                this.login_password = '';
             })
             .catch((error)=>{
-                console.log(error);
+                alert('Error del Servidor');
+                console.error(error);
+                this.login_username = '';
+                this.login_password = '';
             })
+        },
+
+        register(event){
+            event.preventDefault();
+
+            this.$apollo.mutate({
+              mutation:gql`mutation ($user: UserInput!){
+                  createUser(user: $user)
+              }`,
+                variables:{
+                    "user": {
+                        "first_name": this.registerFirstname,
+                        "second_name": this.registerLastname,
+                        "user_name": this.registerUsername,
+                        "email": this.registerEmail,
+                        "user_password": this.registerPassword,
+                        "confirm_password": this.registerConfirmPassword,
+                        "birth": this.registerDate
+                    }
+                }
+            })
+            .then((data)=>{
+                if (data.createUser!=='Usuario no Autenticado!'){
+                    // Usuario Registrado satisfactoriamente
+                    document.querySelector(".container").classList.remove("login-mode");
+                }else{
+                    // Usuario no registrado
+                    alert('Fallo en el registro');
+                }
+            })
+            .catch((error)=>{
+                alert('Error del Servidor');
+                console.error(error);
+            })
+
+            this.registerFirstname = '';
+            this.registerLastname = '';
+            this.registerUsername = '';
+            this.registerEmail='';
+            this.registerDate = '';
+            this.registerPassword = '';
+            this.registerConfirmPassword = '';
         }
     }
 }

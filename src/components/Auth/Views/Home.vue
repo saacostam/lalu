@@ -4,9 +4,7 @@
             <img src="/images/Lalu-home-header-font.png" alt="Font" >
             <img src="/images/Sound-wave-1.png"  class="home-header-wave" alt="wave">
             <div class="user-name">
-                <h2>
-                    Hi Godfrey of Elder!
-                </h2>
+                <h2>Hi {{ this.$store.state.username}}!</h2>
             </div>
         </div>
         <div class="home-main-contain">

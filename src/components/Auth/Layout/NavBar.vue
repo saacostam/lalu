@@ -14,12 +14,12 @@
                             </span>
                         </li>
                         <li>
-                            <span class="library-menu" :class="{'active':$route.name==='Library'}">
+                            <span class="library-menu" :class="{'active':$route.name==='Library'||$route.name==='Playlist'}">
                                 <img src="/icons/library(0).png"  alt="Library-icon" >
                                 <router-link :to="{path:'/app/library'}">Library</router-link>
                             </span>
                         </li>
-                        <li>
+                        <!-- <li>
                             <span class="artist-menu" :class="{'active':$route.name==='Artists'}">
                                 <img src="/icons/artist(0).png"  alt="artist-icon" >
                                 <router-link :to="{path:'/app/artists'}">Artists</router-link>
@@ -30,7 +30,7 @@
                                 <img src="/icons/be-artist(0).png"  alt="headphones-icon" >
                                 <router-link :to="{path:'/app/become-artist'}">Be an Artist</router-link>
                             </span>
-                        </li>
+                        </li> -->
                         <!--
                     <li>
                         <span class="upload-menu">

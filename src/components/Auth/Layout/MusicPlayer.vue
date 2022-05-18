@@ -1,7 +1,8 @@
 <template>
     <div class="music-player">
         <input type="range" id="progress" v-model="this.currentTime" min="0" :max="this.totalTime" :style="`background-size: ${this.currentTime*100/this.totalTime}% 100%;`">
-        <audio id="audio"></audio>
+        <audio id="audio" :src="`https://storage.googleapis.com/lalu-data-storage/songs/${this.$store.state.currentSong._id}.mp3`">
+        </audio>
         <span class="time time-elapsed">{{formatTime(this.currentTime)}}</span>
         <span class="time time-left">-{{formatTime(this.totalTime-this.currentTime)}}</span>
 
@@ -21,11 +22,11 @@
             <a class="control strategy" @click="toggleRepeat"><i :class="{'active':this.strategy==='repeat'}" class="bi bi-arrow-repeat"></i></a>
           </div>
 
-          <div class="info col-md-4 col-3" v-if="this.title||this.artist||this.date">
+          <div class="info col-md-4 col-3" v-if="this.$store.state.currentSong.title||this.$store.state.currentSong.artist||this.date">
             <div class="image d-none d-md-block"></div>
             <div class="info-table d-none d-md-block">
-              <span class="title">{{this.title}}</span>
-              <span class="artist">{{this.artist}}</span>
+              <span class="title">{{this.$store.state.currentSong.title}}</span>
+              <span class="artist">{{this.$store.state.currentSong.artist.artist_name}}</span>
               <span class="date">{{this.date}}</span>
             </div>
             <div class="wrapper-like">
@@ -37,8 +38,6 @@
 </template>
 
 <script>
-import { file } from '@/mock-data/binaryAudioFile.js'
-
 export default {
     name: 'MusicPlayer',
     data(){
@@ -49,16 +48,18 @@ export default {
         src:'',
         isPlaying:false,
         strategy:'order',
-        title:'Summer',
-        artist: 'Calvin Harris',
-        date: '2014',
+        date: 2021,
         likes: '10M'
       }
     },
     mounted(){
       const audioElement = document.getElementById("audio");
       audioElement.addEventListener("ended", ()=>{
-        this.forward();
+        audioElement.load();
+      })
+
+      audioElement.addEventListener('abort', ()=>{
+        this.isPlaying = false;
       })
 
       audioElement.addEventListener("timeupdate", ()=>{
@@ -81,8 +82,6 @@ export default {
       progressBar.addEventListener("input", (e)=>{
         audioElement.currentTime = e.target.value;
       });
-
-      this.load();
     },
     watch: {
       volume: function(vol) {
@@ -91,11 +90,6 @@ export default {
       }
     },
     methods:{
-      forward(){
-        const audioElement = document.getElementById("audio");
-        this.$store.state.player.forward();
-        audioElement.load();
-      },
       load(){
         const audioElement = document.getElementById("audio");
         // audioElement.src = `data:audio/mp3;base64,${file}`;

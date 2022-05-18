@@ -21,8 +21,13 @@ export default {
   name: 'Auth',
   components: { NavBar, MusicPlayer, SearchBar },
   data(){
-    return {
+    const token = localStorage.getItem("token");
+    if (token===null){
+      this.$router.push({path:'/'})
+    }
+    this.$store.state.username = localStorage.getItem("username");
 
+    return {
     }
   }
 }

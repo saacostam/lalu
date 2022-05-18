@@ -7,6 +7,7 @@
                 <input id="sb-input" type="text" placeholder="Search for songs, artists, albums">
                 <img src="/icons/settings.png" alt="settings-icon" 
                 style="width: 30px;height: 30px;" >
+                <button class="btn" style="margin: 0; padding: 0;" @click="logOut"><i class="bi bi-box-arrow-right" style="color:white; font-size:1.4em;"></i></button>
             </span>
         </div>
     </div>
@@ -17,6 +18,13 @@ export default {
     name: 'SearchBar',
     data:()=>{
         return {
+        }
+    },
+    methods:{
+        logOut(){
+            localStorage.removeItem("token");
+            localStorage.removeItem("username");
+            this.$router.push( {path: '/'} );
         }
     }
 }
