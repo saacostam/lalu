@@ -7,8 +7,8 @@
                 <div class="container">
                     <img src="assets/laluLogo.png" alt="">
                     <div class="button-box">
-                        <button type="button"  id="register-btn"  class="register">Login</button>
-                        <button type="button" id="login-btn" class="login">Register</button>
+                        <button type="button"  id="register-btn"  class="register nav-btn">Login</button>
+                        <button type="button" id="login-btn" class="login nav-btn">Register</button>
                     </div>
                     <div class="forms-container-login">
                         <div class="signin">
@@ -83,11 +83,13 @@ export default {
     const container = document.querySelector(".container");
 
     login_btn.addEventListener('click', () =>{
-        container.classList.add("login-mode");
+      this.option = 'register';
+      container.classList.add("login-mode");
     });
 
     register_btn.addEventListener('click', () =>{
-        container.classList.remove("login-mode");
+      this.option = 'login';
+      container.classList.remove("login-mode");
     });
   }
 }
@@ -221,7 +223,7 @@ form{
 .input-field{
     max-width: 380px;
     width: 100%;
-    height: 55px;
+    height: 45px;
     background-color: #39393973;
     margin: 10px 0;
     border-radius: 55px;
@@ -231,12 +233,16 @@ form{
     padding: 0 .4rem;
 }
 
+.input-field *{
+  position: relative;
+  bottom:5px;
+}
 
 .input-field i{
     text-align: center;
     line-height: 50px;
     color:white;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
 }
 
 .input-field input{
@@ -245,7 +251,7 @@ form{
     border: none;
     line-height: 1;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: white;
 }
 
@@ -277,14 +283,21 @@ form{
     color: white;
     font-size: 1.2rem;
     font-weight: 600;
-    margin: 40px 0;
+    margin: 10px 0;
     transition: 0.5s;
-
 }
 
 .btn:hover{
     color: #FF78F2;
     background: linear-gradient(0.25turn, white,white);
+}
+
+.container:not(.login-mode) #register-btn{
+  border-bottom : 2px solid #FF78F2;
+}
+
+.container.login-mode #login-btn{
+  border-bottom : 2px solid #FF78F2;
 }
 
 /*Animations*/

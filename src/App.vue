@@ -4,6 +4,7 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+@import url('https://use.fontawesome.com/releases/v6.1.1/css/all.css');
 
 *{
 	font-family: 'Trebuchet MS', 'Roboto', sans-serif;
