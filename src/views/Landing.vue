@@ -12,15 +12,15 @@
                     </div>
                     <div class="forms-container-login">
                         <div class="signin">
-                            <form action="" class="sing-in-form">
+                            <form @submit="login" class="sing-in-form">
                                 <h2 class="title">Nice to see you again!</h2>
                                 <div class="input-field">
                                     <i class = "fas fa-user"></i>
-                                    <input type="text" placeholder="Username" required>
+                                    <input v-model="login_username" type="text" placeholder="Username" required>
                                 </div>
                                 <div class="input-field">
                                     <i class="fa-solid fa-lock"></i>
-                                    <input type="password" placeholder="Password" required>
+                                    <input v-model ="login_password" type="password" placeholder="Password" required>
                                 </div>
                                 <a href="#">You forgot your password?</a>
                                 <input type ="submit" value="Feel the music!" class="btn solid">
@@ -32,33 +32,33 @@
                             <form action="" class="register-form">
                                 <div class="input-field">
                                     <i class="fa-solid fa-address-card"></i>
-                                    <input type="text" placeholder="First Name" required>
+                                    <input v-model ="registerFirstname" type="text" placeholder="First Name" required>
                                 </div>
                                 <div class="input-field">
                                     <i class="fa-solid fa-address-card"></i>
-                                    <input type="text" placeholder="Last Name" required>
+                                    <input v-model ="registerLastname" type="text" placeholder="Last Name" required>
                                 </div>
                                 <div class="input-field">
                                     <i class = "fas fa-user"></i>
-                                    <input type="text" placeholder="Username" required>
+                                    <input v-model ="registerUsername" type="text" placeholder="Username" required>
                                 </div>
                                 <div class="input-field">
                                     <i class="fa-solid fa-envelope"></i>
-                                    <input type="email" placeholder="Email" required>
+                                    <input v-model ="registerEmail" type="email" placeholder="Email" required>
                                 </div>
                                 <div class="input-field">
                                     <i class="fa-solid fa-calendar"></i>
-                                    <input type="date" placeholder="Date of birth">
+                                    <input v-model ="registerDate" type="date" placeholder="Date of birth">
                                 </div>
                                 <div class="input-field">
                                     <i class="fa-solid fa-lock"></i>
-                                    <input type="password" placeholder="Password" required>
+                                    <input v-model ="registerPassword" type="password" placeholder="Password" required>
                                 </div>
                                 <div class="input-field">
                                     <i class="fa-solid fa-user-lock"></i>
-                                    <input type="password" placeholder="Confirm Password" required>
+                                    <input v-model ="registerConfirmPassword" type="password" placeholder="Confirm Password" required>
                                 </div>
-                                <input type ="submit" value="Rock Up!" class="btn solid">
+                                <input  type ="submit" value="Rock Up!" class="btn solid">
                             </form>
                         </div>
                     </div>
@@ -70,14 +70,36 @@
 </template>
 
 <script>
+import gql from 'graphql-tag';
 export default {
   name: 'Landing',
   data(){
     console.log(this.$apollo);
     return {
-      option:'login'
+      option:'login',
+      login_username:'',
+      login_password:'',
+      registerFirstname:'',
+      registerLastname:'',
+      registerUsername:'',
+      registerEmail:'',
+      registerDate:'',
+      registerPassword:'',
+      registerConfirmPassword:'',
+      //getAllPlaylistsAndAlbums :'',
     }
   },
+  /*apollo:{
+      getAllPlaylistsAndAlbums : gql`{
+            
+               getAllPlaylistsAndAlbums {
+                   _id
+                   playlist_username
+                   playlist_name
+                }
+            
+         }`
+    },*/
   mounted(){
     const login_btn = document.querySelector("#login-btn");
     const register_btn = document.querySelector("#register-btn");
@@ -92,7 +114,32 @@ export default {
       this.option = 'login';
       container.classList.remove("login-mode");
     });
-  }
+  },
+  methods:{
+      login(event){
+          event.preventDefault();
+          this.$apollo.mutate({
+              mutation:gql`mutation ($login: LoginInput!){
+                  loginUser(login:$login)
+              }`,
+                variables:{
+                    "login": {
+                        "user_name": this.login_username,
+                        "email": null,
+                        "user_password": this.login_password,
+                    }
+                }
+            })
+            .then((data)=>{
+                this.$router.push({
+                    path : "app/home",
+                })
+            })
+            .catch((error)=>{
+                console.log(error);
+            })
+        }
+    }
 }
 </script>
 
