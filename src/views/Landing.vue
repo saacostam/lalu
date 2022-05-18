@@ -7,8 +7,8 @@
                 <div class="container">
                     <img src="assets/laluLogo.png" alt="">
                     <div class="button-box">
-                        <button type="button"  id="register-btn"  class="register-btn nav-btn">Login</button>
-                        <button type="button" id="login-btn" class="login-btn nav-btn">Register</button>
+                        <button type="button"  id="register-btn"  class="register nav-btn">Login</button>
+                        <button type="button" id="login-btn" class="login nav-btn">Register</button>
                     </div>
                     <div class="forms-container-login">
                         <div class="signin">
@@ -96,6 +96,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .loginRegister-design{
     display: grid;
     grid-template-columns: repeat(2, 50%);
@@ -149,7 +151,7 @@ export default {
 }
 
 /*Register and login refer as btns */
-.nav-btn{
+.register{
     font-family: 'Trebuchet MS';
     color: white;
     font-size: 1.2rem;
@@ -163,9 +165,28 @@ export default {
     position: relative;
 }
 
-.nav-btn:hover{
+.register:hover{
     border-bottom : 2px solid #FF78F2;
 }
+
+.login{
+    font-family: 'Trebuchet MS';
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 60px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    border-bottom : black;
+    outline: none;
+
+    position: relative;
+}
+
+.login:hover{
+    border-bottom : 2px solid #FF78F2;
+}
+
 /*Defining the style of the forms*/
 .forms-container-login{
     position: absolute;
