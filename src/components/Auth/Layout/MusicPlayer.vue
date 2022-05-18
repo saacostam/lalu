@@ -98,7 +98,8 @@ export default {
       },
       load(){
         const audioElement = document.getElementById("audio");
-        audioElement.src = `data:audio/mp3;base64,${file}`;
+        // audioElement.src = `data:audio/mp3;base64,${file}`;
+        audioElement.src = 'https://storage.googleapis.com/lalu-data-storage/songs/62718e54b9621e3a0066d49f.mp3';
       },
       play(){
         const audioElement = document.getElementById("audio");
