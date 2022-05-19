@@ -5,9 +5,7 @@ export default createStore({
     state: {
         songQueue: new SongQueue(),
         currentSong: {
-            artist: {
-                artist_name: ''
-            }
+            artists:['']
         },
         username: ''
     },
