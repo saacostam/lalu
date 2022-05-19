@@ -12,7 +12,7 @@
                     </div>
                     <div class="forms-container-login">
                         <div class="signin">
-                            <form @submit="mockLogin" class="sing-in-form">
+                            <form @submit="login" class="sing-in-form">
                                 <h2 class="title">Nice to see you again!</h2>
                                 <div class="input-field">
                                     <i class = "fas fa-user"></i>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="forms-container-register">
                         <div class="register">
-                            <form @submit="mockRegister" class="register-form">
+                            <form @submit="register" class="register-form">
                                 <div class="input-field">
                                     <i class="fa-solid fa-address-card"></i>
                                     <input v-model ="registerFirstname" type="text" placeholder="First Name" required>
@@ -150,7 +150,7 @@ export default {
       },
         login(event){
             event.preventDefault();
-          
+            localStorage.setItem("username", this.login_username);
             this.$apollo.mutate({
               mutation:gql`mutation ($login: LoginInput!){
                   loginUser(login:$login)
@@ -163,10 +163,9 @@ export default {
                 }
             })
             .then((data)=>{
-                if (data.loginUser!=='Usuario no Autenticado!'){
+                if (data.data.loginUser!=='User login failed'){
                     // Usuario Autenticado
-                    localStorage.setItem("token", "token-dummy");
-                    localStorage.setItem("username", data.loginUser);
+                    localStorage.setItem("token", data.data.loginUser);
                     this.$router.push({path : "app/home"});
                 }else{
                     // Usuario no autenticado
@@ -203,7 +202,7 @@ export default {
                 }
             })
             .then((data)=>{
-                if (data.createUser!=='Usuario no Autenticado!'){
+                if (data.data.createUser!=='User creation failed'){
                     // Usuario Registrado satisfactoriamente
                     document.querySelector(".container").classList.remove("login-mode");
                 }else{

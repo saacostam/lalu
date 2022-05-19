@@ -10,7 +10,7 @@
                         <div class="img-song"></div>
                         <div class="data">
                             <span class="song-title">{{song.title}}</span>
-                            <span class="song-artist">{{song.artist.artist_name}}</span>
+                            <!-- <span class="song-artist">{{song.artist.artist_name}}</span> -->
                         </div>
                     </div>
                 </div>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import gql from 'graphql-tag';
 export default {
     name: 'Playlist',
     data(){
@@ -55,6 +56,32 @@ export default {
             this.$store.state.currentSong = song;
             this.$forceUpdate();
         }
+    },
+    mounted(){
+        this.$apollo.query({
+            query:gql`
+                query Query($id: String!) {
+                    getPlaylistById(_id: $id) {
+                        playlist_name
+                        playlist_songs {
+                            _id
+                            title
+                        }
+                    }
+                }
+            `,
+            variables:{
+                "id":this.$route.params.id
+            }
+        })
+        .then((data) =>{
+            console.log(data)
+            this.playlist_songs = data.data.getPlaylistById.playlist_songs
+            this.playlist_name = data.data.getPlaylistById.playlist_name
+        })
+        .catch((error) =>{
+            console.log(error)
+        })
     }
 }
 </script>

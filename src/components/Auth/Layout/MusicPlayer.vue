@@ -26,7 +26,7 @@
             <div class="image d-none d-md-block"></div>
             <div class="info-table d-none d-md-block">
               <span class="title">{{this.$store.state.currentSong.title}}</span>
-              <span class="artist">{{this.$store.state.currentSong.artist.artist_name}}</span>
+              <!-- <span class="artist">{{this.$store.state.currentSong.artist.artist_name}}</span> -->
               <span class="date">{{this.date}}</span>
             </div>
             <div class="wrapper-like">

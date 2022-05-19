@@ -2,9 +2,8 @@
     <div id="library">
         <div class="playlists mb-3">
             <h3 class="header">PLAYLISTS</h3>
-            <CarouselPlaylist :songs="this.getAllUsernamePlaylistsAndAlbums" />
+            <CarouselPlaylist :songs="this.getAllUsernamePlaylists" />
         </div>
-
         <div class="liked-songs mb-3">
             <h3 class="header">LIKED SONGS</h3>
             <Carousel :songs="this.songs" />
@@ -21,10 +20,8 @@ export default {
     components:{Carousel, CarouselPlaylist},
     data(){
         return {
-            getAllUsernamePlaylistsAndAlbums:[
-                {playlist_name: 'Playlist #1', _id:1},
-                {playlist_name: 'Playlist #2', _id:2},
-                {playlist_name: 'Playlist #3', _id:3},
+            getAllUsernamePlaylists:[
+                
             ],
             songs: [
                 {title: 'Levitating',artist: 'Dua Lipa', src:'/images/dua-lipa.png'}, 
@@ -41,20 +38,29 @@ export default {
             view_width: 0
         }
     },
-    apollo:{
-        // getAllUsernamePlaylistsAndAlbums: {
-        //     query: gql`
-        //         query ($playlistUsername: String!){
-        //             getAllUsernamePlaylists(playlist_username: $playlistUsername) {
-        //                 _id
-        //                 playlist_name
-        //             }
-        //         }
-        //     `,
-        //     variables: {
-        //         "playlistUsername": this.$store.state.username
-        //     },
-        // }
+    mounted(){
+        this.$apollo.query({
+            query:gql`
+                 query ($playlistUsername: String!){
+                     getAllUsernamePlaylists(playlist_username: $playlistUsername) {
+                         _id
+                         playlist_name
+                     }
+                 }
+             `,
+             variables:{
+                 "playlistUsername":this.$store.state.username
+             }
+        })
+        .then((data)  =>{
+            console.log(data)
+            this.getAllUsernamePlaylists = data.data.getAllUsernamePlaylists
+        })
+        .catch((error) =>{
+            console.log(error)
+        }) 
+            
+        
     }
     // mounted(){
     //     const library = document.getElementById('library');
