@@ -7,7 +7,7 @@
                 <div class="container">
                     <img src="assets/laluLogo.png" alt="">
                     <div class="button-box">
-                        <button type="button"  id="register-btn"  class="register nav-btn">Login</button>
+                        <button type="button"  id="register-btn"  class="registerBtn nav-btn">Login</button>
                         <button type="button" id="login-btn" class="login nav-btn">Register</button>
                     </div>
                     <div class="forms-container-login">
@@ -283,7 +283,7 @@ export default {
 }
 
 /*Register and login refer as btns */
-.register{
+.registerBtn{
     font-family: 'Trebuchet MS';
     color: white;
     font-size: 1.2rem;
@@ -297,7 +297,7 @@ export default {
     position: relative;
 }
 
-.register:hover{
+.registerBtn:hover{
     border-bottom : 2px solid #FF78F2;
 }
 
