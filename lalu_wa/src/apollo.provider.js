@@ -5,7 +5,7 @@ const cache = new InMemoryCache();
 
 const apolloClient = new ApolloClient({
     cache,
-    uri: "http://localhost:3000/graphql",
+    uri: "http://proxy.lalu/graphql",
 });
 
 export const provider = createApolloProvider({
