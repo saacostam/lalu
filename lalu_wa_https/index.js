@@ -1,14 +1,14 @@
-const https = require('https');
-const fs = require('fs');
+const http = require('http');
+//const fs = require('fs');
 var nStatic = require('node-static');
 
 var fileServer = new nStatic.Server('./public');
 
-const options = {
+/*const options = {
     key: fs.readFileSync('certifications/key.pem'),
     cert: fs.readFileSync('certifications/cert.pem')
-};
+};*/
 
-https.createServer(options, function(req, res) {
+http.createServer(function (req, res) {
     fileServer.serve(req, res);
 }).listen(8080);
