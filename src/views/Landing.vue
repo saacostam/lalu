@@ -5,6 +5,7 @@
         <div class="loginRegister">
             <div class="loginRegister">
                 <div class="container">
+                    <button class="btn btn-primary" @click="getSoapData">SOAP</button>
                     <img src="assets/laluLogo.png" alt="">
                     <div class="button-box">
                         <button type="button"  id="register-btn"  class="registerBtn nav-btn">Login</button>
@@ -222,6 +223,20 @@ export default {
             this.registerDate = '';
             this.registerPassword = '';
             this.registerConfirmPassword = '';
+        },
+        async getSoapData(){
+            this.id = prompt("id", "31e5d31c-d36e-441d-a666-37d272f16a35");
+            const resp = await fetch(`http://34.123.106.254:3009/consume/${this.id}`);
+            // http://34.123.106.254:3009/consume/31e5d31c-d36e-441d-a666-37d272f16a35
+            // const resp = await fetch(`http://34.123.106.254:3009/consume/31e5d31c-d36e-441d-a666-37d272f16a35`)
+            // alert(JSON.stringify({
+            //     "user": {
+            //         "id": "31e5d31c-d36e-441d-a666-37d272f16a35",
+            //         "name": "User1",
+            //         "email": "test_email12345@test.com"
+            //     }
+            // }));
+            alert(JSON.stringify(resp));
         }
     }
 }
@@ -452,9 +467,5 @@ form{
 
 .container.login-mode .forms-container-register{
     transform: translateY(-1100px);
-}
-
-#login-submit{
-
 }
 </style>
