@@ -1,12 +1,15 @@
 <template>
     <div class="my-carousel">
-        <div id="carousel-empty" v-if="this.songs.length===0"><span>No Playlist Found</span></div>
-
+        <div id="carousel-empty" v-if="this.songs.length===0">
+        <div class="spinner-border" role="status" style = "color:var(--pink)">
+            <span class="sr-only">Loading...</span>
+        </div>
+        </div>
         <div id="carousel1" class="carousel slide" data-ride="carousel1" v-if="this.view_width>1000 && this.songs.length!==0">
             <div class="carousel-inner">
                 <div class="carousel-item scroll" :class="{'active':j===1}" v-for="j in Math.ceil((this.songs.length)/5)" :key="j">
                     <div class="tarj" v-for="i in Math.min(5, this.songs.length-((j-1)*5))" :key="i" @click="goToPlaylistById(this.songs[5*(j-1)+(i-1)]._id)">
-                        <div class="image">{{this.songs[5*(j-1)+(i-1)].playlist_name}}</div>
+                        <div class="image"></div>
                         <div class="data">
                             <span class="title">{{this.songs[5*(j-1)+(i-1)].playlist_name}}</span>
                         </div>
@@ -27,7 +30,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item scroll" :class="{'active':j===1}" v-for="j in Math.ceil((this.songs.length)/4)" :key="j">
                     <div class="tarj" v-for="i in Math.min(4, this.songs.length-((j-1)*4))" :key="i" @click="goToPlaylistById(this.songs[4*(j-1)+(i-1)]._id)">
-                        <div class="image">{{this.songs[4*(j-1)+(i-1)].playlist_name}}</div>
+                        <div class="image"></div>
                         <div class="data">
                             <span class="title">{{this.songs[4*(j-1)+(i-1)].playlist_name}}</span>
                         </div>
@@ -47,7 +50,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item scroll" :class="{'active':j===1}" v-for="j in Math.ceil((this.songs.length)/3)" :key="j" >
                     <div class="tarj" v-for="i in Math.min(3, this.songs.length-((j-1)*3))" :key="i" @click="goToPlaylistById(this.songs[3*(j-1)+(i-1)]._id)">
-                        <div class="image">{{this.songs[3*(j-1)+(i-1)].playlist_name}}</div>
+                        <div class="image"></div>
                         <div class="data">
                             <span class="title">{{this.songs[3*(j-1)+(i-1)].playlist_name}}</span>
                         </div>
@@ -67,7 +70,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item scroll" :class="{'active':j===1}" v-for="j in Math.ceil((this.songs.length)/2)" :key="j">
                     <div class="tarj" v-for="i in Math.min(2, this.songs.length-((j-1)*2))" :key="i" @click="goToPlaylistById(this.songs[2*(j-1)+(i-1)]._id)">
-                        <div class="image">{{this.songs[2*(j-1)+(i-1)].playlist_name}}</div>
+                        <div class="image"></div>
                         <div class="data">
                             <span class="title">{{this.songs[2*(j-1)+(i-1)].playlist_name}}</span>
                         </div>
@@ -87,7 +90,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item scroll" :class="{'active':j===1}" v-for="j in Math.ceil((this.songs.length)/1)" :key="j">
                     <div class="tarj" v-for="i in Math.min(1, this.songs.length-((j-1)*1))" :key="i" @click="goToPlaylistById(this.songs[1*(j-1)+(i-1)]._id)">
-                        <div class="image">{{this.songs[1*(j-1)+(i-1)].playlist_name}}</div>
+                        <div class="image"></div>
                         <div class="data">
                             <span class="title">{{this.songs[1*(j-1)+(i-1)].playlist_name}}</span>
                         </div>
@@ -163,7 +166,8 @@ export default {
     display: flex;
     align-content: center;
     justify-content: center;
-    background-color: var(--pink);
+    background-image: url('/images/playlist_image.jpg');
+    background-size: contain;
     color: white;
     line-height :150px;
 }

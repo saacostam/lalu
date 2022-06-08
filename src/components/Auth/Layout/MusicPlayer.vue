@@ -26,7 +26,7 @@
             <div class="image d-none d-md-block"></div>
             <div class="info-table d-none d-md-block">
               <span class="title">{{this.$store.state.currentSong.title}}</span>
-              <span class="artist">{{this.$store.state.currentSong.artist.artist_name}}</span>
+              <span class="artist">{{this.$store.state.currentSong.artists[0]}}</span> 
               <span class="date">{{this.date}}</span>
             </div>
             <div class="wrapper-like">
@@ -44,26 +44,30 @@ export default {
       return {
         currentTime: 0,
         totalTime: 0,
-        volume: 100,
+        volume: 50,
         src:'',
         isPlaying:false,
         strategy:'order',
-        date: 2021,
-        likes: '10M'
+        date: 2022,
+        likes: '0'
       }
     },
     mounted(){
       const audioElement = document.getElementById("audio");
       audioElement.addEventListener("ended", ()=>{
-        audioElement.load();
+        audioElement.pause();
       })
 
       audioElement.addEventListener('abort', ()=>{
-        this.isPlaying = false;
+        audioElement.play();
       })
 
       audioElement.addEventListener("timeupdate", ()=>{
         this.currentTime = audioElement.currentTime;
+      })
+
+      audioElement.addEventListener("canplay", ()=>{
+         audioElement.play();
       })
 
       audioElement.addEventListener("durationchange", ()=>{
@@ -260,9 +264,11 @@ input[type=range]::-webkit-slider-runnable-track  {
   flex-direction: row;
 }
 .info .image{
-  width: 3.8em;
-  height: 3.8em;
-  background-color:#042259;
+  min-width: 3.8em;
+  min-height: 3.8em;
+  background-color: #042259;
+  background-image:url('/images/reproductor_image.jpg');
+  background-size: contain;
   color: white;
   border-radius: 0.7em;
 }
