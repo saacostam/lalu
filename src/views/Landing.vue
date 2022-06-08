@@ -150,7 +150,6 @@ export default {
       },
         login(event){
             event.preventDefault();
-          
             this.$apollo.mutate({
               mutation:gql`mutation ($login: LoginInput!){
                   loginUser(login:$login)

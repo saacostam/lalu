@@ -1,25 +1,26 @@
 {
-  "name": "lalu_wa",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
-  },
-  "dependencies": {
-    "@apollo/client": "^3.6.4",
-    "@vue/apollo-option": "^4.0.0-alpha.17",
-    "graphql": "^16.5.0",
-    "graphql-tag": "^2.12.6",
-    "react": "^18.1.0",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-router": "~4.5.17",
-    "@vue/cli-plugin-vuex": "~4.5.17",
-    "@vue/cli-service": "~4.5.17",
-    "@vue/compiler-sfc": "^3.0.0"
-  }
+    "name": "lalu_wa",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service serve"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.6.4",
+        "@vue/apollo-option": "^4.0.0-alpha.17",
+        "axios": "^0.27.2",
+        "graphql": "^16.5.0",
+        "graphql-tag": "^2.12.6",
+        "react": "^18.1.0",
+        "vue": "^3.0.0",
+        "vue-router": "^4.0.0-0",
+        "vuex": "^4.0.0-0"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-router": "~4.5.17",
+        "@vue/cli-plugin-vuex": "~4.5.17",
+        "@vue/cli-service": "~4.5.17",
+        "@vue/compiler-sfc": "^3.0.0"
+    }
 }
