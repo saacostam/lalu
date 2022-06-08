@@ -37,4 +37,8 @@
 :root{
 	--pink: #FA62EA;
 }
+
+.modal-backdrop {
+  z-index: -1;
+}
 </style>
