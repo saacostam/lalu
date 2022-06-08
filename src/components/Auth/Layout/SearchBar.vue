@@ -54,7 +54,7 @@ export default {
             this.$router.push( {path: '/'} );
         },
         async getSoapData(){
-            axios.get( `http://34.123.106.254:3009/consume/${this.id}`)
+            axios.get( `//34.123.106.254:3009/consume/${this.id}`)
                 .then( response => {
                     const data = response.data;
                     console.log(data);
