@@ -6,7 +6,7 @@
                 <img src="/icons/musical-note-menu.png" alt="search-icon" style="width: 25px;height: 25px;">
                 <input id="sb-input" type="text" placeholder="Search for songs, artists, albums">
                 <img src="/icons/settings.png" alt="settings-icon" 
-                style="width: 30px;height: 30px;" >
+                style="width: 30px;height: 30px;" @click="getSoapData">
                 <button class="btn" style="margin: 0; padding: 0;" @click="logOut"><i class="bi bi-box-arrow-right" style="color:white; font-size:1.4em;"></i></button>
             </span>
         </div>
@@ -18,6 +18,7 @@ export default {
     name: 'SearchBar',
     data:()=>{
         return {
+            id:''
         }
     },
     methods:{
@@ -25,6 +26,20 @@ export default {
             localStorage.removeItem("token");
             localStorage.removeItem("username");
             this.$router.push( {path: '/'} );
+        },
+        async getSoapData(){
+            this.id = prompt("id", "31e5d31c-d36e-441d-a666-37d272f16a35");
+            const resp = await fetch(`http://34.123.106.254:3009/consume/${this.id}`);
+            // http://34.123.106.254:3009/consume/31e5d31c-d36e-441d-a666-37d272f16a35
+            // const resp = await fetch(`http://34.123.106.254:3009/consume/31e5d31c-d36e-441d-a666-37d272f16a35`)
+            // alert(JSON.stringify({
+            //     "user": {
+            //         "id": "31e5d31c-d36e-441d-a666-37d272f16a35",
+            //         "name": "User1",
+            //         "email": "test_email12345@test.com"
+            //     }
+            // }));
+            alert(JSON.stringify(resp));
         }
     }
 }

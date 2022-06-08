@@ -23,7 +23,7 @@
                                     <input v-model ="login_password" type="password" placeholder="Password" required>
                                 </div>
                                 <a href="#">You forgot your password?</a>
-                                <input type ="submit" value="Feel the music!" class="btn solid">
+                                <input type ="submit" value="Feel the music!" class="btn solid" id="login-submit">
                             </form>
                         </div>
                     </div>
@@ -265,16 +265,16 @@ export default {
 
 .container img{
     position: absolute;
+    left: 190px;
+    top: 30px;
     width: 326.98px;
     height: 132.86px;
-    left: 180px;
-    top: 30px;
     transition: 1.1s .4s ease-in-out;
 }
 
 
 .button-box{
-    width: 400px;
+    width: fit-content;
     margin: 35px auto;
     top: 150px;
     position: relative;
@@ -333,9 +333,9 @@ export default {
     position: absolute;
     width: 100%;
     height: 100%;
-    top:800px;
+    top:1200px;
     left: 0;
-    transition: 1.1s .4s ease-in-out;
+    transition: 1.5s .4s ease-in-out;
 }
 
 form{
@@ -451,6 +451,10 @@ form{
 }
 
 .container.login-mode .forms-container-register{
-    transform: translateY(-700px);
+    transform: translateY(-1100px);
+}
+
+#login-submit{
+
 }
 </style>
