@@ -44,7 +44,7 @@ export default {
       return {
         currentTime: 0,
         totalTime: 0,
-        volume: 50,
+        volume: 10,
         src:'',
         isPlaying:false,
         strategy:'order',
