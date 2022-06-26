@@ -5,7 +5,7 @@ const cache = new InMemoryCache();
 
 const apolloClient = new ApolloClient({
     cache,
-    uri: "http://lalu-ag:3007/graphql",
+    uri: "http://lalu-a3007/graphql",
 });
 
 export const provider = createApolloProvider({
