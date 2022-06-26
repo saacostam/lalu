@@ -1,6 +1,6 @@
 FROM node:14.17.4-stretch
 RUN mkdir /lalu_web
-COPY /lalu_wa /lalu_web
+COPY . /lalu_web
 
 WORKDIR /lalu_web
 RUN npm install
