@@ -7,7 +7,7 @@ const apolloClient = new ApolloClient({
     cache,
     // uri: "http://34.174.125.175:3007/graphql",
     // uri: "http://lalu-ag:3007/graphql"
-    uri: "https://35.223.151.61.nip.io/graphql"
+    uri: "http://35.223.151.61.nip.io/graphql"
 });
 
 export const provider = createApolloProvider({
