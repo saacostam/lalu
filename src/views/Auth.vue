@@ -4,7 +4,7 @@
       <NavBar id="navbar"/>
       <div class="view-router-content">
         <SearchBar id="search-bar"/>
-        <router-view class="nested-view"/>
+        <router-view class="nested-view px-12 py-8"/>
       </div>
     </div>
     <MusicPlayer id="music-player"/>
@@ -21,14 +21,8 @@ export default {
   name: 'Auth',
   components: { NavBar, MusicPlayer, SearchBar },
   data(){
-    const token = localStorage.getItem("token");
-    if (token===null){
-      this.$router.push({path:'/'})
-    }
-    this.$store.state.username = localStorage.getItem("username");
-
-    return {
-    }
+    this.$store.state.username = localStorage.getItem("username") || 'Friend';
+    return {};
   }
 }
 </script>
@@ -53,9 +47,11 @@ export default {
   flex: auto;
   display: flex;
   flex-direction: column;
+  padding: 0 1rem;
+  max-width: 1444px;
+  margin: 0 auto;
 }
 .nested-view{
-  flex: auto;
   min-height: calc(100vh - 162px);
   overflow-y: auto;
   width: 100%;

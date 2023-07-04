@@ -1,40 +1,25 @@
 export class SongQueue {
-    constructor(queue) {
-        this.queue = queue || [];
-        this.nextPointer = 0;
-        this.ordered = true;
-        this.history = [];
-        this.currentSong = '';
+    constructor(){
+        this.queue = [];
+        this.current = 0;
     }
 
-    newQueue(new_queue) {
-        this.queue = new_queue;
-        this.nextPointer = 0;
-        this.history = [];
+    setQueue(newQueue){
+        this.queue = newQueue;
+        this.current = 0;
     }
 
-    randomNumber(min, max) {
-        // Retorna un número aleatorio entre min (incluido) y max (excluido)
-        return Math.random() * (max - min) + min;
+    prev(){
+        this.current = (this.current-1+this.queue.length)%(this.queue.length);
+        return this.queue[this.current];
     }
 
-    nextSong() {
-        if (this.queue.length === 0) {
-            return null
-        }
-
-        if (!this.ordered) {
-            this.nextPointer = this.randomNumber(0, this.queue.length);
-        }
-
-        this.history.push(this.currentSong);
-        this.currentSong = this.queue.splice(this.nextPointer, 1);
-        return this.currentSong;
+    next(){
+        this.current = (this.current+1+this.queue.length)%(this.queue.length);
+        return this.queue[this.current]
     }
-
-    prevSong() {
-        this.history.push(this.currentSong);
-        this.currentSong = this.history.pop();
-        return this.currentSong;
+    
+    getCurrentSong(){
+        return this.queue[this.current];
     }
 }

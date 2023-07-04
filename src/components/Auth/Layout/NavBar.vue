@@ -2,54 +2,34 @@
     <div class="nav-bar">
         <div class="nav-container">
             <div class="nav-header">
-                <img src="https://picsum.photos/125/125" alt="Avatar">
+                <img src="https://picsum.photos/450" alt="Avatar">
             </div>
             <div class="nav-main">
                 <nav>
-                    <ul>
+                    <ul class="mx-auto">
                         <li>
-                            <span class="home-menu" :class="{'active':$route.name==='Home'}">
-                                <img src="/icons/home (1).png"  alt="Home-icon" >
-                                <router-link :to="{path:'/app/home'}">Home</router-link>
-                            </span>
+                            <router-link class="home-menu" :class="{'active':$route.name==='Home'}" :to="{path:'/app/home'}">
+                                <img :src="`/icons/home (${$route.name==='Home' ? 1: 0}).png`"  alt="Home-icon" class="d-inline">
+                                <span>Home</span>
+                            </router-link>
                         </li>
                         <li>
-                            <span class="library-menu" :class="{'active':$route.name==='Library'||$route.name==='Playlist'}">
-                                <img src="/icons/library(0).png"  alt="Library-icon" >
-                                <router-link :to="{path:'/app/library'}">Library</router-link>
-                            </span>
-                        </li>
-                        <!-- <li>
-                            <span class="artist-menu" :class="{'active':$route.name==='Artists'}">
-                                <img src="/icons/artist(0).png"  alt="artist-icon" >
-                                <router-link :to="{path:'/app/artists'}">Artists</router-link>
-                            </span>
+                            <router-link class="library-menu" :class="{'active':$route.name==='Library'||$route.name==='Playlist'}" :to="{path:'/app/library'}">
+                                <img :src="`/icons/library(${$route.name==='Library'||$route.name==='Playlist' ? 1: 0}).png`"  alt="Library-icon" class="d-inline">
+                                <span>Library</span>
+                            </router-link>
                         </li>
                         <li>
-                            <span class="be-artist-menu" :class="{'active':$route.name==='BecomeArtist'}">
-                                <img src="/icons/be-artist(0).png"  alt="headphones-icon" >
-                                <router-link :to="{path:'/app/become-artist'}">Be an Artist</router-link>
-                            </span>
-                        </li> -->
-                        <!--
-                    <li>
-                        <span class="upload-menu">
-                            <img src="icons/cloud-upload(0).png"  alt="upload-icon" >
-                            <a href="#">upload Song</a>
-                        </span>
-                    </li>
-                    <li>
-                        <span class="artist-profile-menu">
-                            <img src="icons/artist-profile(0).png"  alt="artist-profile-icon" >
-                            <a href="#">Artist profile</a>
-                        </span>
-                    </li>
-                    -->
+                            <router-link class="artist-menu" :class="{'active':$route.name==='Artists'||$route.name==='Artist'}" :to="{path:'/app/artists'}">
+                                <img :src="`/icons/artist(${$route.name==='Artists'||$route.name==='Artist' ? 1: 0}).png`"  alt="artist-icon" class="d-inline">
+                                <span>Artists</span>
+                            </router-link>
+                        </li>
                     </ul>
                 </nav>
             </div>
             <div class="nav-footer">
-                <img src="/images/lalu_logo 3.png" alt="Lalu_logo">
+                <img src="/images/lalu_logo 2.png" alt="Lalu_logo">
             </div>
         </div>
     </div>
@@ -71,7 +51,8 @@ export default {
 }
 .nav-bar{
     overflow-y: auto;
-    width: 190px;
+    min-width: 190px;
+    max-width: 190px;
 }
 /*==============================*/
 /* nav style */
@@ -143,6 +124,7 @@ export default {
 .home-menu:hover , .library-menu:hover , .artist-menu:hover , .be-artist-menu:hover, .upload-menu:hover, .artist-profile-menu:hover{
     opacity: 1;
     transition: 0.3s;
+
 }
 .upload-menu img{
     width: 30px;
@@ -161,7 +143,7 @@ export default {
     opacity: 1;
 }
 
-span.active *{
+.active span{
     color: #FA62EA;
 }
 

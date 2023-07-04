@@ -1,7 +1,7 @@
 <template>
     <div class="music-player">
         <input type="range" id="progress" v-model="this.currentTime" min="0" :max="this.totalTime" :style="`background-size: ${this.currentTime*100/this.totalTime}% 100%;`">
-        <audio id="audio" :src="`https://storage.googleapis.com/lalu-data-storage/songs/${this.$store.state.currentSong._id}.mp3`">
+        <audio id="audio" :src="`/audio/${this.$store.state.songQueue.getCurrentSong().src}/audio.mp3`">
         </audio>
         <span class="time time-elapsed">{{formatTime(this.currentTime)}}</span>
         <span class="time time-left">-{{formatTime(this.totalTime-this.currentTime)}}</span>
@@ -15,18 +15,18 @@
 
           <div class="panel col-md-4 col-5">
             <a class="control strategy" @click="toggleShuffle"><i :class="{'active':this.strategy==='shuffle'}" class="bi bi-shuffle"></i></a>
-            <a class="control"><i class="bi bi-skip-start"></i></a>
+            <a class="control" @click="this.$store.state.songQueue.prev()"><i class="bi bi-skip-start"></i></a>
             <a class="control play-control" @click="play" v-if="this.isPlaying==false"><i class="bi bi-play"></i></a>
             <a class="control play-control" @click="pause" v-else><i class="bi bi-pause"></i></a>
-            <a class="control"><i class="bi bi-skip-end"></i></a>
+            <a class="control" @click="this.$store.state.songQueue.next()"><i class="bi bi-skip-end"></i></a>
             <a class="control strategy" @click="toggleRepeat"><i :class="{'active':this.strategy==='repeat'}" class="bi bi-arrow-repeat"></i></a>
           </div>
 
-          <div class="info col-md-4 col-3" v-if="this.$store.state.currentSong.title||this.$store.state.currentSong.artist||this.date">
-            <div class="image d-none d-md-block"></div>
+          <div class="info col-md-4 col-3" v-if="this.$store.state.songQueue.getCurrentSong()">
+            <div class="image d-none d-md-block" :style="`background-image:url('/audio/${this.$store.state.songQueue.getCurrentSong().src}/img.jpg');`"></div>
             <div class="info-table d-none d-md-block">
-              <span class="title">{{this.$store.state.currentSong.title}}</span>
-              <span class="artist">{{this.$store.state.currentSong.artists[0]}}</span> 
+              <span class="title truncate text-ellipsis w-32">{{this.$store.state.songQueue.getCurrentSong().name}}</span>
+              <span class="artist truncate text-ellipsis w-32">{{this.$store.state.songQueue.getCurrentSong().artists}}</span> 
               <span class="date">{{this.date}}</span>
             </div>
             <div class="wrapper-like">
@@ -56,6 +56,10 @@ export default {
       const audioElement = document.getElementById("audio");
       audioElement.addEventListener("ended", ()=>{
         audioElement.pause();
+      })
+
+      audioElement.addEventListener('ended', () => {
+        this.$store.state.songQueue.next();
       })
 
       audioElement.addEventListener('abort', ()=>{
@@ -94,11 +98,6 @@ export default {
       }
     },
     methods:{
-      load(){
-        const audioElement = document.getElementById("audio");
-        // audioElement.src = `data:audio/mp3;base64,${file}`;
-        audioElement.src = 'https://storage.googleapis.com/lalu-data-storage/songs/62718e54b9621e3a0066d49f.mp3';
-      },
       play(){
         const audioElement = document.getElementById("audio");
         audioElement.play();
@@ -267,7 +266,6 @@ input[type=range]::-webkit-slider-runnable-track  {
   min-width: 3.8em;
   min-height: 3.8em;
   background-color: #042259;
-  background-image:url('/images/reproductor_image.jpg');
   background-size: contain;
   color: white;
   border-radius: 0.7em;
