@@ -23,7 +23,7 @@
           </div>
 
           <div class="info col-md-4 col-3" v-if="this.$store.state.songQueue.getCurrentSong()">
-            <div class="image d-none d-md-block" :style="`background-image:url('/audio/${this.$store.state.songQueue.getCurrentSong().src}/img.jpg');`"></div>
+            <div class="image d-none d-md-block" :style="`background-image:url('https://github.com/saacostam/lalu_fe/raw/master/public/audio/${this.$store.state.songQueue.getCurrentSong().src}/img.jpg');`"></div>
             <div class="info-table d-none d-md-block">
               <span class="title truncate text-ellipsis w-32">{{this.$store.state.songQueue.getCurrentSong().name}}</span>
               <span class="artist truncate text-ellipsis w-32">{{this.$store.state.songQueue.getCurrentSong().artists}}</span> 

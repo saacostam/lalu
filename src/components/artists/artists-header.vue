@@ -1,6 +1,6 @@
 <template>
     <section class="relative h-40 mx-auto rounded-3xl bg-[center_right_20rem] mt-16">
-        <img src="/images/common/sound-wave.png" class="absolute -top-[8.5rem] right-0 w-80"/>
+        <img src="https://github.com/saacostam/lalu_fe/raw/master/public/images/common/sound-wave.png" class="absolute -top-[8.5rem] right-0 w-80"/>
         <span class="text-white absolute top-1/2 left-10 text-5xl font-semibold">Artists</span>
     </section>
 </template>

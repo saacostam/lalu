@@ -2,9 +2,9 @@
     <div class="sb">
         <div class="search-bar-container">
             <span class="search-bar">
-                <img src="/icons/musical-note-menu.png" alt="search-icon" style="width: 25px;height: 25px;">
+                <img src="https://github.com/saacostam/lalu_fe/raw/master/public/icons/musical-note-menu.png" alt="search-icon" style="width: 25px;height: 25px;">
                 <input id="sb-input" type="text" placeholder="Search...">
-                <img src="/icons/settings.png" alt="settings-icon" 
+                <img src="https://github.com/saacostam/lalu_fe/raw/master/public/icons/settings.png" alt="settings-icon" 
                 style="width: 30px;height: 30px;" >
                 <button class="btn" style="margin: 0; padding: 0;" @click="logOut"><i class="bi bi-box-arrow-right" style="color:white; font-size:1.4em;"></i></button>
             </span>

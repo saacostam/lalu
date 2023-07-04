@@ -9,19 +9,19 @@
                     <ul class="mx-auto">
                         <li>
                             <router-link class="home-menu" :class="{'active':$route.name==='Home'}" :to="{path:'/app/home'}">
-                                <img :src="`/icons/home (${$route.name==='Home' ? 1: 0}).png`"  alt="Home-icon" class="d-inline">
+                                <img :src="`https://github.com/saacostam/lalu_fe/raw/master/public/icons/home (0).png`"  alt="Home-icon" class="d-inline">
                                 <span>Home</span>
                             </router-link>
                         </li>
                         <li>
                             <router-link class="library-menu" :class="{'active':$route.name==='Library'||$route.name==='Playlist'}" :to="{path:'/app/library'}">
-                                <img :src="`/icons/library(${$route.name==='Library'||$route.name==='Playlist' ? 1: 0}).png`"  alt="Library-icon" class="d-inline">
+                                <img :src="`https://github.com/saacostam/lalu_fe/raw/master/public/icons/library(0).png`"  alt="Library-icon" class="d-inline">
                                 <span>Library</span>
                             </router-link>
                         </li>
                         <li>
                             <router-link class="artist-menu" :class="{'active':$route.name==='Artists'||$route.name==='Artist'}" :to="{path:'/app/artists'}">
-                                <img :src="`/icons/artist(${$route.name==='Artists'||$route.name==='Artist' ? 1: 0}).png`"  alt="artist-icon" class="d-inline">
+                                <img :src="`https://github.com/saacostam/lalu_fe/raw/master/public/icons/artist(0).png`"  alt="artist-icon" class="d-inline">
                                 <span>Artists</span>
                             </router-link>
                         </li>
@@ -29,7 +29,7 @@
                 </nav>
             </div>
             <div class="nav-footer">
-                <img src="/images/lalu_logo 2.png" alt="Lalu_logo">
+                <img src="https://github.com/saacostam/lalu_fe/raw/master/public/images/lalu_logo 2.png" alt="Lalu_logo">
             </div>
         </div>
     </div>
