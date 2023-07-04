@@ -31,7 +31,7 @@ export default {
     ],
     data(){
         return {
-            fImgSrc: `/audio/${this.$props['src']}/img.jpg` || 'https://picsum.photos/200',
+            fImgSrc: `https://github.com/saacostam/lalu_fe/raw/master/public/audio/${this.$props['src']}/img.jpg` || 'https://picsum.photos/200',
             artistColor: COLORS_CONFIG.PRIMARY_LIGHTER,
             shadowColor: COLORS_CONFIG.PRIMARY,
         }

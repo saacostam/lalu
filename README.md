@@ -1,19 +1,3 @@
-# lalu_wa
+# LALU
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+A Spotify-like app created as a class project for the Software Architecture course in The National University of Colombia.

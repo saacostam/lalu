@@ -1,7 +1,7 @@
 <template>
     <div class="music-player">
         <input type="range" id="progress" v-model="this.currentTime" min="0" :max="this.totalTime" :style="`background-size: ${this.currentTime*100/this.totalTime}% 100%;`">
-        <audio id="audio" :src="`/audio/${this.$store.state.songQueue.getCurrentSong().src}/audio.mp3`">
+        <audio id="audio" :src="`https://github.com/saacostam/lalu_fe/raw/master/public/audio/${this.$store.state.songQueue.getCurrentSong().src}/audio.mp3`">
         </audio>
         <span class="time time-elapsed">{{formatTime(this.currentTime)}}</span>
         <span class="time time-left">-{{formatTime(this.totalTime-this.currentTime)}}</span>
