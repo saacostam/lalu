@@ -1,5 +1,5 @@
 <template>
-    <router-link class="w-48 shrink-0 cursor-pointer hover:no-underline select-none" :to="`/app/artist/${name}`">
+    <router-link class="w-24 md:w-48 shrink-0 cursor-pointer hover:no-underline select-none" :to="`/app/artist/${name}`">
         <img :src="fImgSrc" 
             class="w-100 rounded-full hover:shadow hover:bg-neutral-900" :class="`hover:shadow-[${shadowColor}]`" 
             :alt="name" width="112" height="112"

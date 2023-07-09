@@ -2,7 +2,7 @@
     <div @click="setSong"
         class="bg-neutral-900 ronded rounded-2xl shrink-0 h-fit hover:shadow cursor-pointer select-none" 
         :class="`hover:shadow-[${shadowColor}] ${
-            horizontal ? 'flex flex-row w-80 max-w-80 items-center max-w-[320px]':'w-44 max-w-[176px]'
+            horizontal ? 'flex flex-row md:w-80 max-w-80-md items-center max-w-[320px]':'w-32 md:w-44 max-w-[176px]'
         }`"
     >
         <img :src="fImgSrc" :alt="name" class="rounded-2xl grow-0" 

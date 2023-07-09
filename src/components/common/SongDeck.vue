@@ -1,5 +1,7 @@
 <template>
-    <section class="flex flex-row overflow-x-auto p-1 pb-3">
+    <section 
+        class="inline-grid grid-cols-2 sm:grid-cols-3 md:flex flex-row w-100 flex-nowrap md:overflow-x-auto p-1 pb-3"
+    >
         <SongCard 
             v-for="song in songs"
             :name="song.name"
@@ -7,7 +9,7 @@
             :imgSrc="song.imgSrc"
             :src="song.src"
             :id="song.id"
-            class="mr-8"
+            class="mb-8 md:mb-0 song-card"
         />
     </section>
 </template>
@@ -23,3 +25,16 @@ export default{
     ]
 }
 </script>
+
+<style scoped>
+.song-card{
+    margin: auto;
+    margin-bottom: 32px;
+}
+@media (min-width: 768px) {
+    .song-card{
+        margin: 0;
+        margin-right: 32px;
+    }
+}
+</style>
