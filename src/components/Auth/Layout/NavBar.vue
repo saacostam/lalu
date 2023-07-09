@@ -1,7 +1,7 @@
 <template>
     <div class="nav-bar">
         <div class="nav-container">
-            <div class="nav-header">
+            <div class="nav-header hidden md:flex overflow-hidden">
                 <img src="https://picsum.photos/450" alt="Avatar">
             </div>
             <div class="nav-main">
@@ -51,14 +51,11 @@ export default {
 }
 .nav-bar{
     overflow-y: auto;
-    min-width: 190px;
-    max-width: 190px;
 }
 /*==============================*/
 /* nav style */
 
 .nav-container{
-    width: 190px;
     height: 100%;
     background: linear-gradient(180deg, #A325AD 0%, #1A1A1A 17.19%);
     transform: rotate(0.05deg);
