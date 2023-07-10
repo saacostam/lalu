@@ -8,7 +8,8 @@
 export default {
     name: 'NotFound',
     created(){
-        this.$router.push({ path: '/app/home' });
+        if (localStorage.getItem('username')) this.$router.push({ path: '/app' });
+        else this.$router.push({ path: '/' });
     }
 }
 </script>

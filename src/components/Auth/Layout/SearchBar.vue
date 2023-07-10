@@ -1,12 +1,9 @@
 <template>
     <div class="sb">
-        <!--Search bar-->
         <div class="search-bar-container">
             <span class="search-bar">
-                <img src="/icons/musical-note-menu.png" alt="search-icon" style="width: 25px;height: 25px;">
-                <input id="sb-input" type="text" placeholder="Search for songs, artists, albums">
-                <img src="/icons/settings.png" alt="settings-icon" 
-                style="width: 30px;height: 30px;" >
+                <img src="https://github.com/saacostam/lalu_fe/raw/master/public/icons/musical-note-menu.png" alt="search-icon" style="width: 25px;height: 25px;">
+                <input id="sb-input" type="text" placeholder="Search...">
                 <button class="btn" style="margin: 0; padding: 0;" @click="logOut"><i class="bi bi-box-arrow-right" style="color:white; font-size:1.4em;"></i></button>
             </span>
         </div>
@@ -51,13 +48,12 @@ export default {
 .search-bar *{
     margin: 0 0.5em;
 }
-
-.search-bar img:hover {
-    cursor: pointer;
+.search-bar img, .search-bar button{
+    z-index: 20;
 }
 
 .search-bar input {
-    width: 90%;
+    width: 95%;
     background: rgba(255, 249, 249, 0.13);
     border-radius: 100px;
     padding: 5px 0px 5px 10px;

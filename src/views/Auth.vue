@@ -1,13 +1,31 @@
 <template>
-  <div class="auth">
-    <div class="non-player-content">
-      <NavBar id="navbar"/>
-      <div class="view-router-content">
-        <SearchBar id="search-bar"/>
-        <router-view class="nested-view"/>
+  <div class="max-h-fit max-h-md-screen">
+    <div class="block md:flex flex-md-row max-h-fit max-h-md-screen overflow-y-auto md:overflow-clip"
+      :style="`
+        height:calc( 100vh - ${layoutConfig.musicPlayerHeight}px );
+        min-height:calc( 100vh - ${layoutConfig.musicPlayerHeight}px );
+      `"
+    >
+      <NavBar
+        :style="`
+          width:${isMobileLayout ? 0: layoutConfig.navbarWidth}px;
+          min-width:${isMobileLayout ? 0: layoutConfig.navbarWidth}px;
+        `"
+        class="hidden md:block"
+      />
+      <div
+        :style="`
+          ${isMobileLayout ? '' : `width:calc( 100vw - ${layoutConfig.navbarWidth}px)`};
+          ${isMobileLayout ? '' : `min-width:calc( 100vw - ${layoutConfig.navbarWidth}px)`};
+        `"
+        class="overflow-clip md:overflow-y-auto"
+      >
+        <SearchBar/>
+        <router-view class="px-12 py-8"/>
       </div>
     </div>
-    <MusicPlayer id="music-player"/>
+    <MusicPlayer/>
+    <MobileNav/>
   </div>
 </template>
 
@@ -16,49 +34,31 @@
 import NavBar from '@/components/Auth/Layout/NavBar.vue'
 import MusicPlayer from '@/components/Auth/Layout/MusicPlayer.vue'
 import SearchBar from '@/components/Auth/Layout/SearchBar.vue'
+import MobileNav from '@/components/Auth/Layout/MobileNav.vue'
+import { LayoutConfig } from './../classes';
 
 export default {
   name: 'Auth',
-  components: { NavBar, MusicPlayer, SearchBar },
+  components: { NavBar, MusicPlayer, SearchBar, MobileNav },
+  mounted(){
+    window.addEventListener("resize", this.resizeEventHandler);
+    this.resizeEventHandler();
+  },
+  unmounted(){
+    window.removeEventListener("resize", this.resizeEventHandler);
+  },
   data(){
-    const token = localStorage.getItem("token");
-    if (token===null){
-      this.$router.push({path:'/'})
-    }
-    this.$store.state.username = localStorage.getItem("username");
-
+    this.$store.state.username = localStorage.getItem("username") || 'Friend';
     return {
+      layoutConfig: new LayoutConfig(),
+      isMobileLayout: false,
+      windowWidth: 0,
+    };
+  },
+  methods: {
+    resizeEventHandler(){
+      this.isMobileLayout = window.innerWidth < 768;
     }
   }
 }
 </script>
-
-<style scoped>
-.auth{
-  width: 100vw;
-  height: 100vh;
-  max-height: 100vh;
-  background-color: #101010;
-}
-.non-player-content{
-  width:100vw;
-  position: fixed;
-  top: 0;
-  height: calc(100vh - 100px);
-
-  display: flex;
-  flex-direction: row;
-}
-.view-router-content{
-  flex: auto;
-  display: flex;
-  flex-direction: column;
-}
-.nested-view{
-  flex: auto;
-  min-height: calc(100vh - 162px);
-  overflow-y: auto;
-  width: 100%;
-  max-width: calc(100vw -  190px);
-}
-</style>

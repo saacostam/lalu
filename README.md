@@ -1,19 +1,8 @@
-# lalu_wa
+# 🎵 LALU
 
-## Project setup
-```
-npm install
-```
+This is a spotify-like frontend application created as a class project for the ``Software Architecture`` course at ``National University of Colombia``.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+The original project had a distributed microservices backend with multiple programming languages and components. Currently, the front-end application uses static mock-data to simulate the original behavior of the application.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Demo
+You can find the demo <a href="https://saacostam.github.io/lalu/#/" target="_blank">here</a> 😃

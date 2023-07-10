@@ -1,15 +1,18 @@
 import { createStore } from 'vuex'
 import { SongQueue } from '@/classes/SongQueue.js'
+import { SONGS } from './../mock-data'
 
-export default createStore({
+const store =  createStore({
     state: {
         songQueue: new SongQueue(),
-        currentSong: {
-            artists:['']
-        },
-        username: ''
+        username: 'Friend',
+        navbarOpen: false,
     },
     mutations: {},
     actions: {},
     modules: {}
 })
+
+store.state.songQueue.setQueue(SONGS);
+
+export default store;
