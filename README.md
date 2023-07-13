@@ -1,4 +1,4 @@
-# 🎵 LALU
+# 🎵 LALU 
 
 This is a spotify-like frontend application created as a class project for the ``Software Architecture`` course at ``National University of Colombia``.
 
