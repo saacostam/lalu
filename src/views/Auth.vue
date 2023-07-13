@@ -21,7 +21,7 @@
         class="overflow-clip md:overflow-y-auto"
       >
         <SearchBar/>
-        <router-view class="px-12 py-8"/>
+        <router-view class="px-12 py-8 max-w-6xl mx-auto"/>
       </div>
     </div>
     <MusicPlayer/>
